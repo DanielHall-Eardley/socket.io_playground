@@ -11,7 +11,7 @@
     <h1>Chat App</h1>
   </header>
   <main>
-    <form class="signup" action="/signup" method="POST">
+    <form class="signup" onsubmit="register(event)">
       <h3>Register for chatting</h3>
       <input type="text" name="name" placeholder="Enter name"/>
       <button type="submit">Register</button>
@@ -20,7 +20,7 @@
       <h3>Pick someone to chat with</h3>
       <ul class="user-list"></ul>
     </section>
-    <form action="/send" class="message" method="POST">
+    <form class="message" onsubmit="message(event)">
       <input type="text" name="message"/>
       <button type="submit">Send</button>
     </form>

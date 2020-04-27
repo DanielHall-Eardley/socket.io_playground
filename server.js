@@ -19,20 +19,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + "/public"))
 
-app.post('api/signup', (req, res, next) => {
+app.post('/api/signup', (req, res, next) => {
   const namespace = new NameSpace(uuid(), req.body.name)
-  console.log(namespace)
   state.namespaces.push(namespace)
-  res.status(200).json({data: state.namespaces})
+  res.status(200).json({data: state})
 })
 
-app.get('api/send', (req, res, next) => {
+app.get('/api/send', (req, res, next) => {
   
 })
 
 app.use("/api", (req, res, next) => {
-  console.log("f")
-  res.status(200).json({data: state.namespaces})
+  res.status(200).json({data: state})
 })
 
 app.use((error, req, res, next) => {

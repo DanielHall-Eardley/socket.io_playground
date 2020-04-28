@@ -58,17 +58,19 @@ async function register (e) {
     'Content-Type': 'application/json'
   }
   console.log(body)
-  const response = await api('api/signup', body, headers, 'POST')
+  const response = await api('api/create-thread', body, headers, 'POST')
   console.log(response)
 
-  const userList = document.querySelector('.user-list')
-  for (let user of response.data.namespaces) {
-    const li = `
-    <li class='list-result onclick='createRoom'>
-      ${user.name}
-      <input type='hidden' value=${user.id}/>
-    </li>`
+  const userList = document.querySelector('.thread-list')
 
+  userList.innerHTML = ""
+  for (let user of response.data.namespaces) {
+    const li = document.createElement('li')
+    li.className = 'list-result'
+    li.addEventListener('click', (event) => {
+      console.log(event)
+    })
+    li.innerText = user.name
     userList.append(li)
   }
 }
